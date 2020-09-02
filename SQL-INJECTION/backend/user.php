@@ -19,7 +19,7 @@ $result =  $query->select($sql);
 $rs = pg_fetch_assoc($result);
 
 if(!$rs) {
-	echo 'user does not exist';
+	echo 'user or password wrong';
 }
 
 $data = pg_fetch_all($result);
