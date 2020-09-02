@@ -7,19 +7,24 @@ date_default_timezone_set('America/Sao_Paulo');
 $query = new Database();
 
 $name =  $_REQUEST["name"];
-//$pass =  str_replace("'","",$_REQUEST["pass"]);
 $pass = $_REQUEST["pass"];
+
+// Obtendo a senha dessa forma evita-se SQL Injection
+//$pass =  str_replace("'","",$_REQUEST["pass"]);
 
 $sql = "select * from usuarios where login = '".$name."' and senha = '".$pass."'";
 
 $result =  $query->select($sql);
 
-if($result == false) {
-	echo 'login invalido';
-}else {
-	var_dump(pg_fetch_all($result));
+$rs = pg_fetch_assoc($result);
 
-	echo 'tem dado';
+if(!$rs) {
+	echo 'user does not exist';
 }
+
+$data = pg_fetch_all($result);
+if(!$data == false) {
+	var_dump(pg_fetch_all($result));
+} 
 
 ?>
