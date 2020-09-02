@@ -21,16 +21,5 @@ if($result == false) {
 
 	echo 'tem dado';
 }
-/*
-if(!$result) {
-	echo '';
-}
-
-$rs = pg_fetch_all($result);
-if(!$rs) {
-	echo 'login invalido';
-}else{
-	echo 'login válido';
-}*/
 
 ?>
